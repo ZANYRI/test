@@ -1,0 +1,37 @@
+form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input,
+textarea,
+button {
+    margin-bottom: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+input[disabled] {
+    background-color: #f0f0f0;
+}
+
+div {
+    margin-bottom: 20px;
+}
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  table, th, td {
+    border: 1px solid black;
+  }
+  th, td {
+    padding: 5px 10px;
+    text-align: center;
+  }
