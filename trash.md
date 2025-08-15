@@ -1,95 +1,54 @@
-<div class="layout-container">
-  <div class="layout-column">
-    <div class="content-container">
-      <nav>NAV</nav>
-      <header>HEADER</header>
-      <main>MAIN</main>
-      <div>CONTENT</div> <!-- Бывшая SECTION -->
-      <aside>ASIDE</aside>
-      <footer>FOOTER</footer>
-    </div>
-  </div>
-  <div class="layout-column">
-    <div class="content-container">
-      <nav>NAV</nav>
-      <header>HEADER</header>
-      <main>MAIN</main>
-      <div>CONTENT</div> <!-- Бывшая SECTION -->
-      <aside>ASIDE</aside>
-      <footer>FOOTER</footer>
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* Общие стили для всей страницы */
+  <h2>Вариант 1 — grid-line</h2>
+  <div class="container-lines">
+    <div class="nav">NAV</div>
+    <div class="header">HEADER</div>
+    <div class="main">MAIN</div>
+    <div class="aside">ASIDE</div>
+    <div class="section">SECTION</div>
+    <div class="footer">FOOTER</div>
+  </div>
+
+  <h2>Вариант 2 — grid-areas</h2>
+  <div class="container-areas">
+    <div class="nav">NAV</div>
+    <div class="header">HEADER</div>
+    <div class="main">MAIN</div>
+    <div class="aside">ASIDE</div>
+    <div class="section">SECTION</div>
+    <div class="footer">FOOTER</div>
+  </div>
+
+</body>
+</html>
 body {
-  background: #e6e6e6;
-  margin: 0;
   font-family: Arial, sans-serif;
-}
-
-/* Контейнер макета */
-.layout-container {
-  display: flex;
-  gap: 20px;
+  background: #f4f4f4;
   padding: 20px;
-  max-width: 1600px;
-  margin: 0 auto;
 }
 
-/* Колонки (бывшие fourteen1 и fourteen2) */
-.layout-column {
-  flex: 1;
+h2 {
+  margin-top: 40px;
 }
 
-/* Стили для первого варианта сетки (числовые grid-области) */
-.layout-column:first-child .content-container {
+.container-lines {
   display: grid;
   grid-template-columns: 200px 1fr 1fr;
   grid-template-rows: 100px 150px 150px 100px;
   gap: 10px;
-  width: 800px;
-  margin: 0 auto;
+  margin-bottom: 40px;
 }
 
-.layout-column:first-child header {
-  grid-column: 2 / 4;
-  grid-row: 1 / 2;
-  background: #2196f3;
-}
-
-.layout-column:first-child nav {
-  grid-column: 1 / 2;
-  grid-row: 1 / 5;
-  background: #2196f3;
-}
-
-.layout-column:first-child main {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  background: #2196f3;
-}
-
-.layout-column:first-child .content-block { /* бывшая section */
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-  background: #2196f3;
-}
-
-.layout-column:first-child aside {
-  grid-column: 3 / 4;
-  grid-row: 2 / 4;
-  background: #2196f3;
-}
-
-.layout-column:first-child footer {
-  grid-column: 2 / 4;
-  grid-row: 4 / 5;
-  background: #2196f3;
-}
-
-/* Стили для второго варианта сетки (именованные grid-области) */
-.layout-column:last-child .content-container {
+.container-areas {
   display: grid;
   grid-template-columns: 200px 1fr 1fr;
   grid-template-rows: 100px 150px 150px 100px;
@@ -97,48 +56,57 @@ body {
   grid-template-areas:
     "nav header header"
     "nav main aside"
-    "nav content-block aside"
+    "nav section aside"
     "nav footer footer";
-  width: 800px;
-  margin: 0 auto;
 }
 
-.layout-column:last-child header {
-  grid-area: header;
-  background: #2196f3;
+/* Элементы для первого контейнера (grid-line) */
+.container-lines .nav {
+  grid-column: 1 / 2;
+  grid-row: 1 / 5;
 }
 
-.layout-column:last-child nav {
-  grid-area: nav;
-  background: #2196f3;
+.container-lines .header {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
 }
 
-.layout-column:last-child main {
-  grid-area: main;
-  background: #2196f3;
+.container-lines .main {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
 }
 
-.layout-column:last-child .content-block { /* бывшая section */
-  grid-area: content-block;
-  background: #2196f3;
+.container-lines .aside {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
 }
 
-.layout-column:last-child aside {
-  grid-area: aside;
-  background: #2196f3;
+.container-lines .section {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
 }
 
-.layout-column:last-child footer {
-  grid-area: footer;
-  background: #2196f3;
+.container-lines .footer {
+  grid-column: 2 / 4;
+  grid-row: 4 / 5;
 }
 
-/* Общие стили для всех элементов внутри контейнера */
-.content-container > * {
+/* Элементы для второго контейнера (grid-areas) */
+.container-areas .nav { grid-area: nav; }
+.container-areas .header { grid-area: header; }
+.container-areas .main { grid-area: main; }
+.container-areas .aside { grid-area: aside; }
+.container-areas .section { grid-area: section; }
+.container-areas .footer { grid-area: footer; }
+
+/* Общие стили для всех элементов */
+.nav, .header, .main, .aside, .section, .footer {
+  background: #3399ff;
   color: white;
-  font-size: 24px;
+  font-weight: bold;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 5px;
 }
